@@ -20,6 +20,11 @@ app.set("view engine", "handlebars")
 var databaseUrl = "NewsScrape";
 var collections = ["newScraperdb"];
 
+
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+
+mongoose.connect(MONGODB_URI);
+
 // Hook mongojs configuration to the db variable
 var db = mongojs(databaseUrl, collections);
 db.on("error", function(error) {
