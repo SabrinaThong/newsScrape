@@ -9,7 +9,7 @@ var PORT = 3000;
 var app = express();
 var exphbs = require("express-handlebars");
 
-app.use(logger("dev"));
+//app.use(logger("dev"));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 app.use(express.static("public"));
