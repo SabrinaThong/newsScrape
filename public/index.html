@@ -12,14 +12,24 @@
     <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 <body>
-    <div id="wrapper">
-        <h1>Golf News Scraper!</h1>
+    <header>
+        <div id="jumbo" class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1>Golf News Scraper!</h1>
+                    <p class="lead">Get the latest news on golf here.</p>
+                </div>
+                </div>
+              </div>
+           
         <button method="GET" id="news" type="button" class="btn btn-success">Scrape New Articles!</button>
-
+    </header>
+    
+    <div id="wrapper">
         <div id="container">
             <div id="article"></div>
             <div id="comment"></div>
         </div>
+        <button method="GET" id="saved" type="button" class="btn btn-success">See Saved Articles!</button>
 
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

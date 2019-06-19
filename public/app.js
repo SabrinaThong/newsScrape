@@ -20,13 +20,13 @@ $(document).on("click","p", function() {
     })
     .then(function(data) {
         console.log(data);
-    $("#comment").append("<h2>" + data.title + "</h2>");
+        $("#comment").append("<h2>" + data.title + "</h2>");
       // An input to enter a new title
-      $("#comment").append("<input id='titleinput' name='title' >");
+        $("#comment").append("<input id='titleinput' name='title' >");
       // A textarea to add a new note body
-      $("#comment").append("<textarea id='bodyinput' name='body'></textarea>");
+        $("#comment").append("<textarea id='bodyinput' name='body'></textarea>");
       // A button to submit a new note, with the id of the article saved to it
-      $("#comment").append("<button data-id='" + data._id + "' id='savecomment'>Save Comment</button>");
+        $("#comment").append("<button data-id='" + data._id + "' id='savecomment'>Save Comment</button>");
 
       if(data.comment) {
           $("#titleinput").val(data.comment.title);

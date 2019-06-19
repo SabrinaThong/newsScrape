@@ -17,6 +17,14 @@ app.use(express.static("public"));
 app.engine("handlebars", exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars")
 
+// app.get("/", function(req,res) {
+//     res.render("index");
+// })
+// app.get("/all", function(req,res) {
+//     res.render("views/layouts/main.handlebars");
+// })
+
+
 var databaseUrl = "NewsScrape";
 var collections = ["newScraperdb"];
 
@@ -27,9 +35,9 @@ mongoose.connect(MONGODB_URI);
 
 // Hook mongojs configuration to the db variable
 var db = mongojs(databaseUrl, collections);
-db.on("error", function(error) {
-  console.log("Database Error:", error);
-});
+    db.on("error", function(error) {
+        console.log("Database Error:", error);
+    });
 
 //connecting to Mongo DB
 mongoose.connect("mongodb://localhost/newScraperdb", { useNewURLParser: true });
@@ -63,8 +71,8 @@ app.get("/scrape", function(req,res) {
           results.push(scrapedArticles);
 
           db.Article.create(results) 
-            .then(function(scrapeddb) {
-                console.log(scrapeddb);
+            .then(function(scraped) {
+                console.log(scraped);
             })
             .catch(function(err) {
                 console.log(err);
@@ -105,7 +113,7 @@ app.get("/scrape", function(req,res) {
             .then(function(dbComment) {
                 return db.Article.findOneAndUpdate(
                     {_id: req.params.id},
-                    {$push:{comment:dbComment._id}},
+                    {$push:{Comment:dbComment._id}},
                     {new: true}
                 )
             })
