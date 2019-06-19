@@ -89,7 +89,7 @@ app.get("/scrape", function(req,res) {
         // Log the results once you've looped through each of the elements found with cheerio
      });
 });
-
+    //getting all of the articles from database
     app.get("/all", function(req,res) {
         db.Article.find({}, function(err,data) {
               if(err) throw err;
@@ -100,7 +100,7 @@ app.get("/scrape", function(req,res) {
     app.get("/all/:id", function(req,res) {
         db.Article.findOne({_id: req.params.id})
 
-           // .populate("comments")
+           // .populate("comment")
             .then(function(results) {
                 res.json(results)
             })
@@ -113,7 +113,7 @@ app.get("/scrape", function(req,res) {
             .then(function(dbComment) {
                 return db.Article.findOneAndUpdate(
                     {_id: req.params.id},
-                    {$push:{Comment:dbComment._id}},
+                    {Comment:dbComment._id},
                     {new: true}
                 )
             })

@@ -1,3 +1,5 @@
+
+//creating on click function for scrape articles button
 $(document).on("click","#news", function() { 
 $.getJSON("/all", function(data) {
 
@@ -9,6 +11,7 @@ $.getJSON("/all", function(data) {
       }
     });
 });
+//creating on click function for commenting on articles.
 $(document).on("click","p", function() {
     $("#comment").empty();
 
